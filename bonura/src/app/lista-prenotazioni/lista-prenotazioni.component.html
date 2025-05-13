@@ -1,10 +1,10 @@
-<p>lista-prenotazioni works!</p>
+
 
 @for(prenotazione of vettPrenotazione; track prenotazione)
 {
 <div>
-   <h3>{{prenotazione.nome}}</h3>
-   <b>post {{prenotazione.nome}} di utente #: {{prenotazione.cognome}}</b>
+   <h3>{{prenotazione.nome}} {{prenotazione.cognome}}</h3>
+   <b>Data prenotazione: {{prenotazione.data}} orario prenotazione: {{prenotazione.ora}}</b>
    <hr>
 </div>
 }

@@ -8,7 +8,7 @@
 <p>Data Prenotazione:</p> <input name="DataPrenotazione" #DataPrenotazione> <br>
 <p>Ora Prenotazione:</p> <input name="OraPrenotazione" #OraPrenotazione> <br>
 
-<button type="button" (click)="salva()">salva</button>
+<button type="button" (click)="salva(nome, cognome, Indirizzo, Telefono, Email, DataPrenotazione, OraPrenotazione )">salva</button>
 
 <app-lista-prenotazioni [vettPrenotazione]="vettPrenotazioni"></app-lista-prenotazioni>
 <!-- <pre>{{ data | json }}</pre>  -->

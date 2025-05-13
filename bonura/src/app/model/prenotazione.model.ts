@@ -1,5 +1,7 @@
-export interface Prenotazione
+export class Prenotazione
 {
-   nome: string;
-   cognome: string;
+   constructor(public nome: string, public cognome: string, public indirizzo: string, public telefono: string, public email: string, public data: string, public ora: string){
+
+   }
+   
 }

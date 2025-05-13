@@ -18,6 +18,7 @@ export class AppComponent {
   vettPrenotazioni: Prenotazione[] = [];
   http: HttpClient;
   o!: Observable<Prenotazione[]>;
+  oPost! : Observable<any>;
   loading: boolean = false;
 
   constructor(http: HttpClient) {
@@ -31,8 +32,36 @@ export class AppComponent {
     console.log(this.vettPrenotazioni)
     this.loading = false;
   }
-  salva() {
 
+
+
+    makePost(pren : Prenotazione): void {
+    let dataToSend = JSON.stringify({ 
+      nome: pren.nome,
+      cognome: pren.cognome,
+      dataPrenotazione: pren.data,
+      oraprenotazione: pren.ora,
+    });
+    this.loading = true;
+    this.oPost = this.http.post<any>('https://my-json-server.typicode.com/malizia-g/verificaPrenotazioni/prenotazioni', dataToSend)
+    this.oPost.subscribe(this.getPostResponse);
+  }
+
+   getPostResponse = (d : any) => {
+    this.vettPrenotazioni = d;
+    console.log(this.vettPrenotazioni)
+    this.loading = false;
+  }
+
+
+
+
+  salva(nome: HTMLInputElement, cognome: HTMLInputElement, indirizzo: HTMLInputElement, telefono: HTMLInputElement, email: HTMLInputElement, dataprenotazione: HTMLInputElement, oraprenotazione: HTMLInputElement): boolean {
+    console.log(nome.value, cognome.value, indirizzo.value, telefono.value, email.value, dataprenotazione.value, oraprenotazione.value)
+    let pren = new Prenotazione (nome.value, cognome.value, indirizzo.value, telefono.value, email.value, dataprenotazione.value, oraprenotazione.value)
+    this.vettPrenotazioni.push(pren);
+    this.makePost(pren)
+    return false;
   }
 }
 
