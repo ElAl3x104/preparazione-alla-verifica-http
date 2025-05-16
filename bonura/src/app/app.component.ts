@@ -19,6 +19,7 @@ export class AppComponent {
   http: HttpClient;
   o!: Observable<Prenotazione[]>;
   oPost! : Observable<any>;
+  postData : any;
   loading: boolean = false;
 
   constructor(http: HttpClient) {
@@ -48,9 +49,9 @@ export class AppComponent {
   }
 
    getPostResponse = (d : any) => {
-    this.vettPrenotazioni = d;
-    console.log(this.vettPrenotazioni)
+    this.postData = d;
     this.loading = false;
+    console.log(d);
   }
 
 
